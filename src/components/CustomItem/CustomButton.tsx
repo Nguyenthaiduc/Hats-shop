@@ -3,11 +3,11 @@ import './custom-button.scss'
 
 interface Props {
   children?:React.ReactNode
-  type: string
-  value : string
+  type?: string
+  onClick?: any
 }
 
-const CustomButton : React.FC<Props>= ({children,type,value}) => {
+const CustomButton : React.FC<Props>= ({children,onClick,type}) => {
   return (
    <button className="custom-button">
      {children}

@@ -1,26 +1,22 @@
 import React, { useState } from 'react'
 import FormInput from '../FormInput/FormInput'
 import CustomButton from '../CustomItem/CustomButton'
+import { signInWithGoogle } from '../../firebase/firebase'
 import './signin.scss'
 const SignIn: React.FC = () => {
-    const [emailAndPassword, setEmailAndPassword] = useState({
-        email: '',
-        password: '',
-    })
+    const [email, setEmail] = useState('')
+
+    const [password, setPassword] = useState('')
 
     const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault()
-        setEmailAndPassword({
-            email: '',
-            password: '',
-        })
+        setEmail('')
+        setPassword('')
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmailAndPassword({
-            email: e.target.value,
-            password: e.target.value
-        })
+        setEmail(e.target.value)
+        setPassword(e.target.value)
     }
 
     return (
@@ -30,27 +26,28 @@ const SignIn: React.FC = () => {
 
             <form onSubmit={() => handleSubmit}>
                 <FormInput
-                    label ="email"
+                    label="email"
                     name="email"
-                    value={emailAndPassword.email}
+                    value={email}
                     type="email"
                     handleChange={handleChange}
-                    placeholder = "Email"
+                    placeholder="Email"
                     required
                 />
-               
+
                 <FormInput
                     label="password"
                     name="password"
-                    value={emailAndPassword.password}
+                    value={password}
                     type="password"
                     handleChange={handleChange}
-                    placeholder = "Password"
+                    placeholder="Password"
                     required
                 />
-              
 
-                <CustomButton type="submit" value="submit Form" >Sign In</CustomButton>
+
+                <CustomButton type="submit"  >Sign In</CustomButton>
+                <CustomButton onClick={signInWithGoogle} >{' '}Sign In with Google{' '}</CustomButton>
             </form>
         </div>
     )

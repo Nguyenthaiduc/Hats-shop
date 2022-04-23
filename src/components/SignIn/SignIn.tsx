@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import FormInput from '../FormInput/FormInput'
+import CustomButton from '../CustomItem/CustomButton'
 import './signin.scss'
 const SignIn: React.FC = () => {
     const [emailAndPassword, setEmailAndPassword] = useState({
@@ -27,23 +29,28 @@ const SignIn: React.FC = () => {
             <span>Sign in with your email and password</span>
 
             <form onSubmit={() => handleSubmit}>
-                <input
+                <FormInput
+                    label ="email"
                     name="email"
                     value={emailAndPassword.email}
                     type="email"
-                    onChange={handleChange}
+                    handleChange={handleChange}
+                    placeholder = "Email"
                     required
                 />
-                <label>Email</label>
-                <input
+               
+                <FormInput
+                    label="password"
                     name="password"
                     value={emailAndPassword.password}
                     type="password"
+                    handleChange={handleChange}
+                    placeholder = "Password"
                     required
                 />
-                <label>Password</label>
+              
 
-                <input type="submit" value="submit Form" />
+                <CustomButton type="submit" value="submit Form" >Sign In</CustomButton>
             </form>
         </div>
     )

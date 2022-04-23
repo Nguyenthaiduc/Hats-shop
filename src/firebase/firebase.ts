@@ -16,3 +16,12 @@ const config = {
   export const database = firebase.database();
   export const firestore = firebase.firestore();
   export const auth = firebase.auth()
+
+  const provider = new firebase.auth.GoogleAuthProvider()
+  provider.setCustomParameters({
+      prompt: "Google"
+  })
+
+  export const signInWithGoogle = () => auth.signInWithPopup(provider)
+
+  export default firebase

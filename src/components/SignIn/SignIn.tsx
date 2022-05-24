@@ -14,8 +14,12 @@ const SignIn: React.FC = () => {
         setPassword('')
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value)
+       
+    }
+    const handleChangePass = (e: React.ChangeEvent<HTMLInputElement>) => {
+        
         setPassword(e.target.value)
     }
 
@@ -30,7 +34,7 @@ const SignIn: React.FC = () => {
                     name="email"
                     value={email}
                     type="email"
-                    handleChange={handleChange}
+                    handleChange={handleChangeEmail}
                     placeholder="Email"
                     required
                 />
@@ -40,7 +44,7 @@ const SignIn: React.FC = () => {
                     name="password"
                     value={password}
                     type="password"
-                    handleChange={handleChange}
+                    handleChange={handleChangePass}
                     placeholder="Password"
                     required
                 />
